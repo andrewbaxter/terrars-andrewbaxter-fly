@@ -171,7 +171,7 @@ impl Machine {
         self
     }
 
-    #[doc= "Set the field `services`.\nservices"]
+    #[doc= "Set the field `services`.\n"]
     pub fn set_services(self, v: impl Into<Vec<MachineServicesEl>>) -> Self {
         self.0.data.borrow_mut().services = Some(v.into());
         self
@@ -252,7 +252,7 @@ impl Machine {
         PrimExpr::new(self.shared().clone(), format!("{}.region", self.extract_ref()))
     }
 
-    #[doc= "Get a reference to the value of field `services` after provisioning.\nservices"]
+    #[doc= "Get a reference to the value of field `services` after provisioning.\n"]
     pub fn services(&self) -> ListRef<MachineServicesElRef> {
         ListRef::new(self.shared().clone(), format!("{}.services", self.extract_ref()))
     }
@@ -428,7 +428,7 @@ impl MachineRef {
         PrimExpr::new(self.shared().clone(), format!("{}.region", self.extract_ref()))
     }
 
-    #[doc= "Get a reference to the value of field `services` after provisioning.\nservices"]
+    #[doc= "Get a reference to the value of field `services` after provisioning.\n"]
     pub fn services(&self) -> ListRef<MachineServicesElRef> {
         ListRef::new(self.shared().clone(), format!("{}.services", self.extract_ref()))
     }

@@ -89,18 +89,18 @@ impl App {
         self
     }
 
-    #[doc= "Set the field `org`.\nOptional org slug to operate upon"]
+    #[doc= "Set the field `org`.\nThe name of the organization to generate the app in, ex: `personal` (your initial org)"]
     pub fn set_org(self, v: impl Into<PrimField<String>>) -> Self {
         self.0.data.borrow_mut().org = Some(v.into());
         self
     }
 
-    #[doc= "Get a reference to the value of field `appurl` after provisioning.\nreadonly appUrl"]
+    #[doc= "Get a reference to the value of field `appurl` after provisioning.\n"]
     pub fn appurl(&self) -> PrimExpr<String> {
         PrimExpr::new(self.shared().clone(), format!("{}.appurl", self.extract_ref()))
     }
 
-    #[doc= "Get a reference to the value of field `id` after provisioning.\nreadonly app id"]
+    #[doc= "Get a reference to the value of field `id` after provisioning.\n"]
     pub fn id(&self) -> PrimExpr<String> {
         PrimExpr::new(self.shared().clone(), format!("{}.id", self.extract_ref()))
     }
@@ -110,12 +110,12 @@ impl App {
         PrimExpr::new(self.shared().clone(), format!("{}.name", self.extract_ref()))
     }
 
-    #[doc= "Get a reference to the value of field `org` after provisioning.\nOptional org slug to operate upon"]
+    #[doc= "Get a reference to the value of field `org` after provisioning.\nThe name of the organization to generate the app in, ex: `personal` (your initial org)"]
     pub fn org(&self) -> PrimExpr<String> {
         PrimExpr::new(self.shared().clone(), format!("{}.org", self.extract_ref()))
     }
 
-    #[doc= "Get a reference to the value of field `orgid` after provisioning.\nreadonly orgid"]
+    #[doc= "Get a reference to the value of field `orgid` after provisioning.\n"]
     pub fn orgid(&self) -> PrimExpr<String> {
         PrimExpr::new(self.shared().clone(), format!("{}.orgid", self.extract_ref()))
     }
@@ -200,12 +200,12 @@ impl AppRef {
         &self.shared
     }
 
-    #[doc= "Get a reference to the value of field `appurl` after provisioning.\nreadonly appUrl"]
+    #[doc= "Get a reference to the value of field `appurl` after provisioning.\n"]
     pub fn appurl(&self) -> PrimExpr<String> {
         PrimExpr::new(self.shared().clone(), format!("{}.appurl", self.extract_ref()))
     }
 
-    #[doc= "Get a reference to the value of field `id` after provisioning.\nreadonly app id"]
+    #[doc= "Get a reference to the value of field `id` after provisioning.\n"]
     pub fn id(&self) -> PrimExpr<String> {
         PrimExpr::new(self.shared().clone(), format!("{}.id", self.extract_ref()))
     }
@@ -215,12 +215,12 @@ impl AppRef {
         PrimExpr::new(self.shared().clone(), format!("{}.name", self.extract_ref()))
     }
 
-    #[doc= "Get a reference to the value of field `org` after provisioning.\nOptional org slug to operate upon"]
+    #[doc= "Get a reference to the value of field `org` after provisioning.\nThe name of the organization to generate the app in, ex: `personal` (your initial org)"]
     pub fn org(&self) -> PrimExpr<String> {
         PrimExpr::new(self.shared().clone(), format!("{}.org", self.extract_ref()))
     }
 
-    #[doc= "Get a reference to the value of field `orgid` after provisioning.\nreadonly orgid"]
+    #[doc= "Get a reference to the value of field `orgid` after provisioning.\n"]
     pub fn orgid(&self) -> PrimExpr<String> {
         PrimExpr::new(self.shared().clone(), format!("{}.orgid", self.extract_ref()))
     }
