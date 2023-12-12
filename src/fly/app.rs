@@ -119,6 +119,11 @@ impl App {
     pub fn orgid(&self) -> PrimExpr<String> {
         PrimExpr::new(self.shared().clone(), format!("{}.orgid", self.extract_ref()))
     }
+
+    #[doc= "Get a reference to the value of field `sharedipaddress` after provisioning.\nA default shared ipv4 address automatically attached when no dedicated ipv4 address is created"]
+    pub fn sharedipaddress(&self) -> PrimExpr<String> {
+        PrimExpr::new(self.shared().clone(), format!("{}.sharedipaddress", self.extract_ref()))
+    }
 }
 
 impl Referable for App {
@@ -223,5 +228,10 @@ impl AppRef {
     #[doc= "Get a reference to the value of field `orgid` after provisioning.\n"]
     pub fn orgid(&self) -> PrimExpr<String> {
         PrimExpr::new(self.shared().clone(), format!("{}.orgid", self.extract_ref()))
+    }
+
+    #[doc= "Get a reference to the value of field `sharedipaddress` after provisioning.\nA default shared ipv4 address automatically attached when no dedicated ipv4 address is created"]
+    pub fn sharedipaddress(&self) -> PrimExpr<String> {
+        PrimExpr::new(self.shared().clone(), format!("{}.sharedipaddress", self.extract_ref()))
     }
 }
