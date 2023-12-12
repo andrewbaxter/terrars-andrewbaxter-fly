@@ -98,19 +98,19 @@ impl Cert {
         PrimExpr::new(self.shared().clone(), format!("{}.check", self.extract_ref()))
     }
 
-    #[doc= "Get a reference to the value of field `dnsvalidationhostname` after provisioning.\n"]
-    pub fn dnsvalidationhostname(&self) -> PrimExpr<String> {
-        PrimExpr::new(self.shared().clone(), format!("{}.dnsvalidationhostname", self.extract_ref()))
+    #[doc= "Get a reference to the value of field `dns_validation_hostname` after provisioning.\n"]
+    pub fn dns_validation_hostname(&self) -> PrimExpr<String> {
+        PrimExpr::new(self.shared().clone(), format!("{}.dns_validation_hostname", self.extract_ref()))
     }
 
-    #[doc= "Get a reference to the value of field `dnsvalidationinstructions` after provisioning.\n"]
-    pub fn dnsvalidationinstructions(&self) -> PrimExpr<String> {
-        PrimExpr::new(self.shared().clone(), format!("{}.dnsvalidationinstructions", self.extract_ref()))
+    #[doc= "Get a reference to the value of field `dns_validation_instructions` after provisioning.\n"]
+    pub fn dns_validation_instructions(&self) -> PrimExpr<String> {
+        PrimExpr::new(self.shared().clone(), format!("{}.dns_validation_instructions", self.extract_ref()))
     }
 
-    #[doc= "Get a reference to the value of field `dnsvalidationtarget` after provisioning.\n"]
-    pub fn dnsvalidationtarget(&self) -> PrimExpr<String> {
-        PrimExpr::new(self.shared().clone(), format!("{}.dnsvalidationtarget", self.extract_ref()))
+    #[doc= "Get a reference to the value of field `dns_validation_target` after provisioning.\n"]
+    pub fn dns_validation_target(&self) -> PrimExpr<String> {
+        PrimExpr::new(self.shared().clone(), format!("{}.dns_validation_target", self.extract_ref()))
     }
 
     #[doc= "Get a reference to the value of field `hostname` after provisioning.\n"]
@@ -215,19 +215,19 @@ impl CertRef {
         PrimExpr::new(self.shared().clone(), format!("{}.check", self.extract_ref()))
     }
 
-    #[doc= "Get a reference to the value of field `dnsvalidationhostname` after provisioning.\n"]
-    pub fn dnsvalidationhostname(&self) -> PrimExpr<String> {
-        PrimExpr::new(self.shared().clone(), format!("{}.dnsvalidationhostname", self.extract_ref()))
+    #[doc= "Get a reference to the value of field `dns_validation_hostname` after provisioning.\n"]
+    pub fn dns_validation_hostname(&self) -> PrimExpr<String> {
+        PrimExpr::new(self.shared().clone(), format!("{}.dns_validation_hostname", self.extract_ref()))
     }
 
-    #[doc= "Get a reference to the value of field `dnsvalidationinstructions` after provisioning.\n"]
-    pub fn dnsvalidationinstructions(&self) -> PrimExpr<String> {
-        PrimExpr::new(self.shared().clone(), format!("{}.dnsvalidationinstructions", self.extract_ref()))
+    #[doc= "Get a reference to the value of field `dns_validation_instructions` after provisioning.\n"]
+    pub fn dns_validation_instructions(&self) -> PrimExpr<String> {
+        PrimExpr::new(self.shared().clone(), format!("{}.dns_validation_instructions", self.extract_ref()))
     }
 
-    #[doc= "Get a reference to the value of field `dnsvalidationtarget` after provisioning.\n"]
-    pub fn dnsvalidationtarget(&self) -> PrimExpr<String> {
-        PrimExpr::new(self.shared().clone(), format!("{}.dnsvalidationtarget", self.extract_ref()))
+    #[doc= "Get a reference to the value of field `dns_validation_target` after provisioning.\n"]
+    pub fn dns_validation_target(&self) -> PrimExpr<String> {
+        PrimExpr::new(self.shared().clone(), format!("{}.dns_validation_target", self.extract_ref()))
     }
 
     #[doc= "Get a reference to the value of field `hostname` after provisioning.\n"]

@@ -55,7 +55,7 @@ impl Provider for ProviderFly_ {
     fn extract_provider_type(&self) -> serde_json::Value {
         serde_json::json!({
             "source": "andrewbaxter/fly",
-            "version": "0.1.6",
+            "version": "0.1.7",
         })
     }
 

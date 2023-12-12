@@ -20,9 +20,9 @@ struct MachineData {
     #[serde(skip_serializing_if = "Option::is_none")]
     cmd: Option<ListField<PrimField<String>>>,
     #[serde(skip_serializing_if = "Option::is_none")]
-    cpus: Option<PrimField<f64>>,
+    cpu_type: Option<PrimField<String>>,
     #[serde(skip_serializing_if = "Option::is_none")]
-    cputype: Option<PrimField<String>>,
+    cpus: Option<PrimField<f64>>,
     #[serde(skip_serializing_if = "Option::is_none")]
     entrypoint: Option<ListField<PrimField<String>>>,
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -31,7 +31,7 @@ struct MachineData {
     exec: Option<ListField<PrimField<String>>>,
     image: PrimField<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
-    memorymb: Option<PrimField<f64>>,
+    memory: Option<PrimField<f64>>,
     #[serde(skip_serializing_if = "Option::is_none")]
     mounts: Option<Vec<MachineMountsEl>>,
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -123,15 +123,15 @@ impl Machine {
         self
     }
 
-    #[doc= "Set the field `cpus`.\n"]
-    pub fn set_cpus(self, v: impl Into<PrimField<f64>>) -> Self {
-        self.0.data.borrow_mut().cpus = Some(v.into());
+    #[doc= "Set the field `cpu_type`.\nWhich machine flavor, ex: `shared`"]
+    pub fn set_cpu_type(self, v: impl Into<PrimField<String>>) -> Self {
+        self.0.data.borrow_mut().cpu_type = Some(v.into());
         self
     }
 
-    #[doc= "Set the field `cputype`.\nWhich machine flavor, ex: `shared`"]
-    pub fn set_cputype(self, v: impl Into<PrimField<String>>) -> Self {
-        self.0.data.borrow_mut().cputype = Some(v.into());
+    #[doc= "Set the field `cpus`.\n"]
+    pub fn set_cpus(self, v: impl Into<PrimField<f64>>) -> Self {
+        self.0.data.borrow_mut().cpus = Some(v.into());
         self
     }
 
@@ -153,9 +153,9 @@ impl Machine {
         self
     }
 
-    #[doc= "Set the field `memorymb`.\n"]
-    pub fn set_memorymb(self, v: impl Into<PrimField<f64>>) -> Self {
-        self.0.data.borrow_mut().memorymb = Some(v.into());
+    #[doc= "Set the field `memory`.\nAmount of memory in MB. `256`, `512`, `1024`, ..."]
+    pub fn set_memory(self, v: impl Into<PrimField<f64>>) -> Self {
+        self.0.data.borrow_mut().memory = Some(v.into());
         self
     }
 
@@ -192,14 +192,14 @@ impl Machine {
         ListRef::new(self.shared().clone(), format!("{}.cmd", self.extract_ref()))
     }
 
+    #[doc= "Get a reference to the value of field `cpu_type` after provisioning.\nWhich machine flavor, ex: `shared`"]
+    pub fn cpu_type(&self) -> PrimExpr<String> {
+        PrimExpr::new(self.shared().clone(), format!("{}.cpu_type", self.extract_ref()))
+    }
+
     #[doc= "Get a reference to the value of field `cpus` after provisioning.\n"]
     pub fn cpus(&self) -> PrimExpr<f64> {
         PrimExpr::new(self.shared().clone(), format!("{}.cpus", self.extract_ref()))
-    }
-
-    #[doc= "Get a reference to the value of field `cputype` after provisioning.\nWhich machine flavor, ex: `shared`"]
-    pub fn cputype(&self) -> PrimExpr<String> {
-        PrimExpr::new(self.shared().clone(), format!("{}.cputype", self.extract_ref()))
     }
 
     #[doc= "Get a reference to the value of field `entrypoint` after provisioning.\n"]
@@ -227,9 +227,9 @@ impl Machine {
         PrimExpr::new(self.shared().clone(), format!("{}.image", self.extract_ref()))
     }
 
-    #[doc= "Get a reference to the value of field `memorymb` after provisioning.\n"]
-    pub fn memorymb(&self) -> PrimExpr<f64> {
-        PrimExpr::new(self.shared().clone(), format!("{}.memorymb", self.extract_ref()))
+    #[doc= "Get a reference to the value of field `memory` after provisioning.\nAmount of memory in MB. `256`, `512`, `1024`, ..."]
+    pub fn memory(&self) -> PrimExpr<f64> {
+        PrimExpr::new(self.shared().clone(), format!("{}.memory", self.extract_ref()))
     }
 
     #[doc= "Get a reference to the value of field `mounts` after provisioning.\n"]
@@ -242,9 +242,9 @@ impl Machine {
         PrimExpr::new(self.shared().clone(), format!("{}.name", self.extract_ref()))
     }
 
-    #[doc= "Get a reference to the value of field `privateip` after provisioning.\n"]
-    pub fn privateip(&self) -> PrimExpr<String> {
-        PrimExpr::new(self.shared().clone(), format!("{}.privateip", self.extract_ref()))
+    #[doc= "Get a reference to the value of field `private_ip` after provisioning.\n"]
+    pub fn private_ip(&self) -> PrimExpr<String> {
+        PrimExpr::new(self.shared().clone(), format!("{}.private_ip", self.extract_ref()))
     }
 
     #[doc= "Get a reference to the value of field `region` after provisioning.\nFly region, ex `ord`, `sin`, `mad`"]
@@ -312,13 +312,13 @@ impl BuildMachine {
                 app: self.app,
                 auto_destroy: core::default::Default::default(),
                 cmd: core::default::Default::default(),
+                cpu_type: core::default::Default::default(),
                 cpus: core::default::Default::default(),
-                cputype: core::default::Default::default(),
                 entrypoint: core::default::Default::default(),
                 env: core::default::Default::default(),
                 exec: core::default::Default::default(),
                 image: self.image,
-                memorymb: core::default::Default::default(),
+                memory: core::default::Default::default(),
                 mounts: core::default::Default::default(),
                 name: core::default::Default::default(),
                 region: self.region,
@@ -368,14 +368,14 @@ impl MachineRef {
         ListRef::new(self.shared().clone(), format!("{}.cmd", self.extract_ref()))
     }
 
+    #[doc= "Get a reference to the value of field `cpu_type` after provisioning.\nWhich machine flavor, ex: `shared`"]
+    pub fn cpu_type(&self) -> PrimExpr<String> {
+        PrimExpr::new(self.shared().clone(), format!("{}.cpu_type", self.extract_ref()))
+    }
+
     #[doc= "Get a reference to the value of field `cpus` after provisioning.\n"]
     pub fn cpus(&self) -> PrimExpr<f64> {
         PrimExpr::new(self.shared().clone(), format!("{}.cpus", self.extract_ref()))
-    }
-
-    #[doc= "Get a reference to the value of field `cputype` after provisioning.\nWhich machine flavor, ex: `shared`"]
-    pub fn cputype(&self) -> PrimExpr<String> {
-        PrimExpr::new(self.shared().clone(), format!("{}.cputype", self.extract_ref()))
     }
 
     #[doc= "Get a reference to the value of field `entrypoint` after provisioning.\n"]
@@ -403,9 +403,9 @@ impl MachineRef {
         PrimExpr::new(self.shared().clone(), format!("{}.image", self.extract_ref()))
     }
 
-    #[doc= "Get a reference to the value of field `memorymb` after provisioning.\n"]
-    pub fn memorymb(&self) -> PrimExpr<f64> {
-        PrimExpr::new(self.shared().clone(), format!("{}.memorymb", self.extract_ref()))
+    #[doc= "Get a reference to the value of field `memory` after provisioning.\nAmount of memory in MB. `256`, `512`, `1024`, ..."]
+    pub fn memory(&self) -> PrimExpr<f64> {
+        PrimExpr::new(self.shared().clone(), format!("{}.memory", self.extract_ref()))
     }
 
     #[doc= "Get a reference to the value of field `mounts` after provisioning.\n"]
@@ -418,9 +418,9 @@ impl MachineRef {
         PrimExpr::new(self.shared().clone(), format!("{}.name", self.extract_ref()))
     }
 
-    #[doc= "Get a reference to the value of field `privateip` after provisioning.\n"]
-    pub fn privateip(&self) -> PrimExpr<String> {
-        PrimExpr::new(self.shared().clone(), format!("{}.privateip", self.extract_ref()))
+    #[doc= "Get a reference to the value of field `private_ip` after provisioning.\n"]
+    pub fn private_ip(&self) -> PrimExpr<String> {
+        PrimExpr::new(self.shared().clone(), format!("{}.private_ip", self.extract_ref()))
     }
 
     #[doc= "Get a reference to the value of field `region` after provisioning.\nFly region, ex `ord`, `sin`, `mad`"]
