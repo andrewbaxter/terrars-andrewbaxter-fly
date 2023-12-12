@@ -1,6 +1,6 @@
 {
     "provider": "andrewbaxter/fly",
-    "version": "0.1.3",
+    "version": "0.1.6",
     "dest": "src/fly",
 	"feature_gate": "Cargo.toml"
 }
