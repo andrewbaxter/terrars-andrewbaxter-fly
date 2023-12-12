@@ -97,7 +97,7 @@ impl Ip {
         self
     }
 
-    #[doc= "Get a reference to the value of field `address` after provisioning.\n"]
+    #[doc= "Get a reference to the value of field `address` after provisioning.\nEmpty if using `shared_v4`"]
     pub fn address(&self) -> PrimExpr<String> {
         PrimExpr::new(self.shared().clone(), format!("{}.address", self.extract_ref()))
     }
@@ -117,7 +117,7 @@ impl Ip {
         PrimExpr::new(self.shared().clone(), format!("{}.region", self.extract_ref()))
     }
 
-    #[doc= "Get a reference to the value of field `type_` after provisioning.\n`v4` or `v6`"]
+    #[doc= "Get a reference to the value of field `type_` after provisioning.\nOne of the following values (by regex): `^(v4|v6|private_v6)$`"]
     pub fn type_(&self) -> PrimExpr<String> {
         PrimExpr::new(self.shared().clone(), format!("{}.type", self.extract_ref()))
     }
@@ -158,7 +158,7 @@ pub struct BuildIp {
     pub tf_id: String,
     #[doc= "The App this resource will be created in"]
     pub app: PrimField<String>,
-    #[doc= "`v4` or `v6`"]
+    #[doc= "One of the following values (by regex): `^(v4|v6|private_v6)$`"]
     pub type_: PrimField<String>,
 }
 
@@ -205,7 +205,7 @@ impl IpRef {
         &self.shared
     }
 
-    #[doc= "Get a reference to the value of field `address` after provisioning.\n"]
+    #[doc= "Get a reference to the value of field `address` after provisioning.\nEmpty if using `shared_v4`"]
     pub fn address(&self) -> PrimExpr<String> {
         PrimExpr::new(self.shared().clone(), format!("{}.address", self.extract_ref()))
     }
@@ -225,7 +225,7 @@ impl IpRef {
         PrimExpr::new(self.shared().clone(), format!("{}.region", self.extract_ref()))
     }
 
-    #[doc= "Get a reference to the value of field `type_` after provisioning.\n`v4` or `v6`"]
+    #[doc= "Get a reference to the value of field `type_` after provisioning.\nOne of the following values (by regex): `^(v4|v6|private_v6)$`"]
     pub fn type_(&self) -> PrimExpr<String> {
         PrimExpr::new(self.shared().clone(), format!("{}.type", self.extract_ref()))
     }

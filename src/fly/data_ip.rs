@@ -12,8 +12,8 @@ struct DataIpData {
     provider: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     for_each: Option<String>,
-    address: PrimField<String>,
     app: PrimField<String>,
+    id: PrimField<String>,
 }
 
 struct DataIp_ {
@@ -40,7 +40,7 @@ impl DataIp {
         self
     }
 
-    #[doc= "Get a reference to the value of field `address` after provisioning.\n"]
+    #[doc= "Get a reference to the value of field `address` after provisioning.\nEmpty if using `shared_v4`"]
     pub fn address(&self) -> PrimExpr<String> {
         PrimExpr::new(self.shared().clone(), format!("{}.address", self.extract_ref()))
     }
@@ -60,7 +60,7 @@ impl DataIp {
         PrimExpr::new(self.shared().clone(), format!("{}.region", self.extract_ref()))
     }
 
-    #[doc= "Get a reference to the value of field `type_` after provisioning.\nv4 or v6"]
+    #[doc= "Get a reference to the value of field `type_` after provisioning.\n`v4`, `v6`, or `private_v6`"]
     pub fn type_(&self) -> PrimExpr<String> {
         PrimExpr::new(self.shared().clone(), format!("{}.type", self.extract_ref()))
     }
@@ -99,10 +99,10 @@ impl Datasource_ for DataIp_ {
 
 pub struct BuildDataIp {
     pub tf_id: String,
-    #[doc= ""]
-    pub address: PrimField<String>,
     #[doc= "The App this resource will be created in"]
     pub app: PrimField<String>,
+    #[doc= "A fly-generated ID"]
+    pub id: PrimField<String>,
 }
 
 impl BuildDataIp {
@@ -114,8 +114,8 @@ impl BuildDataIp {
                 depends_on: core::default::Default::default(),
                 provider: None,
                 for_each: None,
-                address: self.address,
                 app: self.app,
+                id: self.id,
             }),
         }));
         stack.add_datasource(out.0.clone());
@@ -146,7 +146,7 @@ impl DataIpRef {
         self.base.clone()
     }
 
-    #[doc= "Get a reference to the value of field `address` after provisioning.\n"]
+    #[doc= "Get a reference to the value of field `address` after provisioning.\nEmpty if using `shared_v4`"]
     pub fn address(&self) -> PrimExpr<String> {
         PrimExpr::new(self.shared().clone(), format!("{}.address", self.extract_ref()))
     }
@@ -166,7 +166,7 @@ impl DataIpRef {
         PrimExpr::new(self.shared().clone(), format!("{}.region", self.extract_ref()))
     }
 
-    #[doc= "Get a reference to the value of field `type_` after provisioning.\nv4 or v6"]
+    #[doc= "Get a reference to the value of field `type_` after provisioning.\n`v4`, `v6`, or `private_v6`"]
     pub fn type_(&self) -> PrimExpr<String> {
         PrimExpr::new(self.shared().clone(), format!("{}.type", self.extract_ref()))
     }

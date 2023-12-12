@@ -14,6 +14,8 @@ struct AppData {
     lifecycle: ResourceLifecycle,
     #[serde(skip_serializing_if = "Option::is_none")]
     for_each: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    enable_shared_ip_address: Option<PrimField<bool>>,
     name: PrimField<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     org: Option<PrimField<String>>,
@@ -89,6 +91,12 @@ impl App {
         self
     }
 
+    #[doc= "Set the field `enable_shared_ip_address`.\nAssign a shared ipv4 address to the app"]
+    pub fn set_enable_shared_ip_address(self, v: impl Into<PrimField<bool>>) -> Self {
+        self.0.data.borrow_mut().enable_shared_ip_address = Some(v.into());
+        self
+    }
+
     #[doc= "Set the field `org`.\nThe name of the organization to generate the app in, ex: `personal` (your initial org)"]
     pub fn set_org(self, v: impl Into<PrimField<String>>) -> Self {
         self.0.data.borrow_mut().org = Some(v.into());
@@ -98,6 +106,11 @@ impl App {
     #[doc= "Get a reference to the value of field `appurl` after provisioning.\n"]
     pub fn appurl(&self) -> PrimExpr<String> {
         PrimExpr::new(self.shared().clone(), format!("{}.appurl", self.extract_ref()))
+    }
+
+    #[doc= "Get a reference to the value of field `enable_shared_ip_address` after provisioning.\nAssign a shared ipv4 address to the app"]
+    pub fn enable_shared_ip_address(&self) -> PrimExpr<bool> {
+        PrimExpr::new(self.shared().clone(), format!("{}.enable_shared_ip_address", self.extract_ref()))
     }
 
     #[doc= "Get a reference to the value of field `id` after provisioning.\n"]
@@ -120,7 +133,7 @@ impl App {
         PrimExpr::new(self.shared().clone(), format!("{}.orgid", self.extract_ref()))
     }
 
-    #[doc= "Get a reference to the value of field `sharedipaddress` after provisioning.\nA default shared ipv4 address automatically attached when no dedicated ipv4 address is created"]
+    #[doc= "Get a reference to the value of field `sharedipaddress` after provisioning.\nA shared ipv4 address, automatically attached in certain conditions or if explicitly requested"]
     pub fn sharedipaddress(&self) -> PrimExpr<String> {
         PrimExpr::new(self.shared().clone(), format!("{}.sharedipaddress", self.extract_ref()))
     }
@@ -173,6 +186,7 @@ impl BuildApp {
                 provider: None,
                 lifecycle: core::default::Default::default(),
                 for_each: None,
+                enable_shared_ip_address: core::default::Default::default(),
                 name: self.name,
                 org: core::default::Default::default(),
             }),
@@ -210,6 +224,11 @@ impl AppRef {
         PrimExpr::new(self.shared().clone(), format!("{}.appurl", self.extract_ref()))
     }
 
+    #[doc= "Get a reference to the value of field `enable_shared_ip_address` after provisioning.\nAssign a shared ipv4 address to the app"]
+    pub fn enable_shared_ip_address(&self) -> PrimExpr<bool> {
+        PrimExpr::new(self.shared().clone(), format!("{}.enable_shared_ip_address", self.extract_ref()))
+    }
+
     #[doc= "Get a reference to the value of field `id` after provisioning.\n"]
     pub fn id(&self) -> PrimExpr<String> {
         PrimExpr::new(self.shared().clone(), format!("{}.id", self.extract_ref()))
@@ -230,7 +249,7 @@ impl AppRef {
         PrimExpr::new(self.shared().clone(), format!("{}.orgid", self.extract_ref()))
     }
 
-    #[doc= "Get a reference to the value of field `sharedipaddress` after provisioning.\nA default shared ipv4 address automatically attached when no dedicated ipv4 address is created"]
+    #[doc= "Get a reference to the value of field `sharedipaddress` after provisioning.\nA shared ipv4 address, automatically attached in certain conditions or if explicitly requested"]
     pub fn sharedipaddress(&self) -> PrimExpr<String> {
         PrimExpr::new(self.shared().clone(), format!("{}.sharedipaddress", self.extract_ref()))
     }

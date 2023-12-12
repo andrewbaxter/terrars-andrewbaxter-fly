@@ -79,7 +79,7 @@ impl DataApp {
         PrimExpr::new(self.shared().clone(), format!("{}.name", self.extract_ref()))
     }
 
-    #[doc= "Get a reference to the value of field `sharedipaddress` after provisioning.\nA default shared ipv4 address automatically attached when no dedicated ipv4 address is created"]
+    #[doc= "Get a reference to the value of field `sharedipaddress` after provisioning.\nA shared ipv4 address, automatically attached in certain conditions or if explicitly requested"]
     pub fn sharedipaddress(&self) -> PrimExpr<String> {
         PrimExpr::new(self.shared().clone(), format!("{}.sharedipaddress", self.extract_ref()))
     }
@@ -207,7 +207,7 @@ impl DataAppRef {
         PrimExpr::new(self.shared().clone(), format!("{}.name", self.extract_ref()))
     }
 
-    #[doc= "Get a reference to the value of field `sharedipaddress` after provisioning.\nA default shared ipv4 address automatically attached when no dedicated ipv4 address is created"]
+    #[doc= "Get a reference to the value of field `sharedipaddress` after provisioning.\nA shared ipv4 address, automatically attached in certain conditions or if explicitly requested"]
     pub fn sharedipaddress(&self) -> PrimExpr<String> {
         PrimExpr::new(self.shared().clone(), format!("{}.sharedipaddress", self.extract_ref()))
     }
