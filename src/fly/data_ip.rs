@@ -1,94 +1,122 @@
 use serde::Serialize;
-use std::cell::RefCell;
-use std::rc::Rc;
-use terrars::*;
+use terrars::{
+    Referable as _,
+    Datasource_ as _,
+    Ref as _,
+};
 use super::provider::ProviderFly;
 
 #[derive(Serialize)]
 struct DataIpData {
-    #[serde(skip_serializing_if = "Vec::is_empty")]
-    depends_on: Vec<String>,
-    #[serde(skip_serializing_if = "SerdeSkipDefault::is_default")]
-    provider: Option<String>,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    for_each: Option<String>,
-    app: PrimField<String>,
-    id: PrimField<String>,
+    #[serde(skip_serializing_if = "std::vec::Vec::is_empty")]
+    depends_on: std::vec::Vec<std::string::String>,
+    #[serde(skip_serializing_if = "terrars::SerdeSkipDefault::is_default")]
+    provider: std::option::Option<std::string::String>,
+    #[serde(skip_serializing_if = "terrars::SerdeSkipDefault::is_default")]
+    lifecycle: terrars::DatasourceLifecycle,
+    #[serde(skip_serializing_if = "std::option::Option::is_none")]
+    for_each: std::option::Option<std::string::String>,
+    app: terrars::PrimField<std::string::String>,
+    id: terrars::PrimField<std::string::String>,
 }
 
 struct DataIp_ {
-    shared: StackShared,
-    tf_id: String,
-    data: RefCell<DataIpData>,
+    shared: terrars::StackShared,
+    tf_id: std::string::String,
+    data: std::cell::RefCell<DataIpData>,
 }
 
 #[derive(Clone)]
-pub struct DataIp(Rc<DataIp_>);
+pub struct DataIp(std::rc::Rc<DataIp_>);
 
 impl DataIp {
-    fn shared(&self) -> &StackShared {
+    fn shared(&self) -> &terrars::StackShared {
         &self.0.shared
     }
 
-    pub fn depends_on(self, dep: &impl Referable) -> Self {
+    pub fn depends_on(self, dep: &impl terrars::Referable) -> Self {
         self.0.data.borrow_mut().depends_on.push(dep.extract_ref());
         self
     }
 
     pub fn set_provider(&self, provider: &ProviderFly) -> &Self {
-        self.0.data.borrow_mut().provider = Some(provider.provider_ref());
+        self.0.data.borrow_mut().provider = std::option::Option::Some(provider.provider_ref());
         self
     }
 
-    #[doc= "Get a reference to the value of field `address` after provisioning.\nEmpty if using `shared_v4`"]
-    pub fn address(&self) -> PrimExpr<String> {
-        PrimExpr::new(self.shared().clone(), format!("{}.address", self.extract_ref()))
+    pub fn add_lifecycle_precondition(
+        self,
+        condition: impl std::convert::Into<terrars::PrimField<bool>>,
+        error_message: impl std::convert::Into<terrars::PrimField<std::string::String>>,
+    ) -> Self {
+        self.0.data.borrow_mut().lifecycle.precondition.push(terrars::LifecycleCondition {
+            condition: condition.into(),
+            error_message: error_message.into(),
+        });
+        self
     }
 
-    #[doc= "Get a reference to the value of field `app` after provisioning.\nThe App this resource will be created in"]
-    pub fn app(&self) -> PrimExpr<String> {
-        PrimExpr::new(self.shared().clone(), format!("{}.app", self.extract_ref()))
+    pub fn add_lifecycle_postcondition(
+        self,
+        condition: impl std::convert::Into<terrars::PrimField<bool>>,
+        error_message: impl std::convert::Into<terrars::PrimField<std::string::String>>,
+    ) -> Self {
+        self.0.data.borrow_mut().lifecycle.postcondition.push(terrars::LifecycleCondition {
+            condition: condition.into(),
+            error_message: error_message.into(),
+        });
+        self
     }
 
-    #[doc= "Get a reference to the value of field `id` after provisioning.\nA fly-generated ID"]
-    pub fn id(&self) -> PrimExpr<String> {
-        PrimExpr::new(self.shared().clone(), format!("{}.id", self.extract_ref()))
+    #[doc = "Get a reference to the value of field `address` after provisioning.\nEmpty if using `shared_v4`"]
+    pub fn address(&self) -> terrars::PrimExpr<std::string::String> {
+        terrars::PrimExpr::new(self.shared().clone(), format!("{}.address", self.extract_ref()))
     }
 
-    #[doc= "Get a reference to the value of field `region` after provisioning.\nFly region, ex `ord`, `sin`, `mad`"]
-    pub fn region(&self) -> PrimExpr<String> {
-        PrimExpr::new(self.shared().clone(), format!("{}.region", self.extract_ref()))
+    #[doc = "Get a reference to the value of field `app` after provisioning.\nThe App this resource will be created in"]
+    pub fn app(&self) -> terrars::PrimExpr<std::string::String> {
+        terrars::PrimExpr::new(self.shared().clone(), format!("{}.app", self.extract_ref()))
     }
 
-    #[doc= "Get a reference to the value of field `type_` after provisioning.\n`v4`, `v6`, or `private_v6`"]
-    pub fn type_(&self) -> PrimExpr<String> {
-        PrimExpr::new(self.shared().clone(), format!("{}.type", self.extract_ref()))
+    #[doc = "Get a reference to the value of field `id` after provisioning.\nA fly-generated ID"]
+    pub fn id(&self) -> terrars::PrimExpr<std::string::String> {
+        terrars::PrimExpr::new(self.shared().clone(), format!("{}.id", self.extract_ref()))
+    }
+
+    #[doc = "Get a reference to the value of field `region` after provisioning.\nFly region, ex `ord`, `sin`, `mad`"]
+    pub fn region(&self) -> terrars::PrimExpr<std::string::String> {
+        terrars::PrimExpr::new(self.shared().clone(), format!("{}.region", self.extract_ref()))
+    }
+
+    #[doc = "Get a reference to the value of field `type_` after provisioning.\n`v4`, `v6`, or `private_v6`"]
+    pub fn type_(&self) -> terrars::PrimExpr<std::string::String> {
+        terrars::PrimExpr::new(self.shared().clone(), format!("{}.type", self.extract_ref()))
     }
 }
 
-impl Referable for DataIp {
-    fn extract_ref(&self) -> String {
+impl terrars::Referable for DataIp {
+    fn extract_ref(&self) -> std::string::String {
         format!("data.{}.{}", self.0.extract_datasource_type(), self.0.extract_tf_id())
     }
 }
 
-impl Datasource for DataIp { }
+impl terrars::Datasource for DataIp { }
 
-impl ToListMappable for DataIp {
-    type O = ListRef<DataIpRef>;
+impl terrars::ToListMappable for DataIp {
+    type O = terrars::ListRef<DataIpRef>;
 
-    fn do_map(self, base: String) -> Self::O {
-        self.0.data.borrow_mut().for_each = Some(format!("${{{}}}", base));
-        ListRef::new(self.0.shared.clone(), self.extract_ref())
+    fn do_map(self, base: std::string::String) -> Self::O {
+        self.0.data.borrow_mut().for_each = std::option::Option::Some(format!("${{{}}}", base));
+        terrars::ListRef::new(self.0.shared.clone(), self.extract_ref())
     }
 }
 
-impl Datasource_ for DataIp_ {
-    fn extract_datasource_type(&self) -> String {
+impl terrars::Datasource_ for DataIp_ {
+    fn extract_datasource_type(&self) -> std::string::String {
         "fly_ip".into()
     }
 
-    fn extract_tf_id(&self) -> String {
+    fn extract_tf_id(&self) -> std::string::String {
         self.tf_id.clone()
     }
 
@@ -98,22 +126,23 @@ impl Datasource_ for DataIp_ {
 }
 
 pub struct BuildDataIp {
-    pub tf_id: String,
-    #[doc= "The App this resource will be created in"]
-    pub app: PrimField<String>,
-    #[doc= "A fly-generated ID"]
-    pub id: PrimField<String>,
+    pub tf_id: std::string::String,
+    #[doc = "The App this resource will be created in"]
+    pub app: terrars::PrimField<std::string::String>,
+    #[doc = "A fly-generated ID"]
+    pub id: terrars::PrimField<std::string::String>,
 }
 
 impl BuildDataIp {
-    pub fn build(self, stack: &mut Stack) -> DataIp {
-        let out = DataIp(Rc::new(DataIp_ {
+    pub fn build(self, stack: &mut terrars::Stack) -> DataIp {
+        let out = DataIp(std::rc::Rc::new(DataIp_ {
             shared: stack.shared.clone(),
             tf_id: self.tf_id,
-            data: RefCell::new(DataIpData {
+            data: std::cell::RefCell::new(DataIpData {
                 depends_on: core::default::Default::default(),
-                provider: None,
-                for_each: None,
+                provider: std::option::Option::None,
+                lifecycle: core::default::Default::default(),
+                for_each: std::option::Option::None,
                 app: self.app,
                 id: self.id,
             }),
@@ -124,12 +153,12 @@ impl BuildDataIp {
 }
 
 pub struct DataIpRef {
-    shared: StackShared,
-    base: String,
+    shared: terrars::StackShared,
+    base: std::string::String,
 }
 
-impl Ref for DataIpRef {
-    fn new(shared: StackShared, base: String) -> Self {
+impl terrars::Ref for DataIpRef {
+    fn new(shared: terrars::StackShared, base: std::string::String) -> Self {
         Self {
             shared: shared,
             base: base,
@@ -138,36 +167,36 @@ impl Ref for DataIpRef {
 }
 
 impl DataIpRef {
-    fn shared(&self) -> &StackShared {
+    fn shared(&self) -> &terrars::StackShared {
         &self.shared
     }
 
-    fn extract_ref(&self) -> String {
+    fn extract_ref(&self) -> std::string::String {
         self.base.clone()
     }
 
-    #[doc= "Get a reference to the value of field `address` after provisioning.\nEmpty if using `shared_v4`"]
-    pub fn address(&self) -> PrimExpr<String> {
-        PrimExpr::new(self.shared().clone(), format!("{}.address", self.extract_ref()))
+    #[doc = "Get a reference to the value of field `address` after provisioning.\nEmpty if using `shared_v4`"]
+    pub fn address(&self) -> terrars::PrimExpr<std::string::String> {
+        terrars::PrimExpr::new(self.shared().clone(), format!("{}.address", self.extract_ref()))
     }
 
-    #[doc= "Get a reference to the value of field `app` after provisioning.\nThe App this resource will be created in"]
-    pub fn app(&self) -> PrimExpr<String> {
-        PrimExpr::new(self.shared().clone(), format!("{}.app", self.extract_ref()))
+    #[doc = "Get a reference to the value of field `app` after provisioning.\nThe App this resource will be created in"]
+    pub fn app(&self) -> terrars::PrimExpr<std::string::String> {
+        terrars::PrimExpr::new(self.shared().clone(), format!("{}.app", self.extract_ref()))
     }
 
-    #[doc= "Get a reference to the value of field `id` after provisioning.\nA fly-generated ID"]
-    pub fn id(&self) -> PrimExpr<String> {
-        PrimExpr::new(self.shared().clone(), format!("{}.id", self.extract_ref()))
+    #[doc = "Get a reference to the value of field `id` after provisioning.\nA fly-generated ID"]
+    pub fn id(&self) -> terrars::PrimExpr<std::string::String> {
+        terrars::PrimExpr::new(self.shared().clone(), format!("{}.id", self.extract_ref()))
     }
 
-    #[doc= "Get a reference to the value of field `region` after provisioning.\nFly region, ex `ord`, `sin`, `mad`"]
-    pub fn region(&self) -> PrimExpr<String> {
-        PrimExpr::new(self.shared().clone(), format!("{}.region", self.extract_ref()))
+    #[doc = "Get a reference to the value of field `region` after provisioning.\nFly region, ex `ord`, `sin`, `mad`"]
+    pub fn region(&self) -> terrars::PrimExpr<std::string::String> {
+        terrars::PrimExpr::new(self.shared().clone(), format!("{}.region", self.extract_ref()))
     }
 
-    #[doc= "Get a reference to the value of field `type_` after provisioning.\n`v4`, `v6`, or `private_v6`"]
-    pub fn type_(&self) -> PrimExpr<String> {
-        PrimExpr::new(self.shared().clone(), format!("{}.type", self.extract_ref()))
+    #[doc = "Get a reference to the value of field `type_` after provisioning.\n`v4`, `v6`, or `private_v6`"]
+    pub fn type_(&self) -> terrars::PrimExpr<std::string::String> {
+        terrars::PrimExpr::new(self.shared().clone(), format!("{}.type", self.extract_ref()))
     }
 }
