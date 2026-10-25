@@ -704,9 +704,9 @@ dependencies = [
 
 [[package]]
 name = "terrars"
-version = "0.2.1"
+version = "0.3.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "6c298506a8fb08e1cac7595f29c5879158711f459523686883f24e8afd90298b"
+checksum = "70a5f3a7d3875563ede7324fbb6a8664ecf57a01b78d69f7d95b9d301d9e7f4c"
 dependencies = [
  "aargvark",
  "cargo_toml",

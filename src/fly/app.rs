@@ -1,3 +1,5 @@
+#![allow(non_camel_case_types)]
+
 use serde::Serialize;
 use terrars::{
     Referable as _,
@@ -7,7 +9,7 @@ use terrars::{
 use super::provider::ProviderFly;
 
 #[derive(Serialize)]
-struct AppData {
+struct AppData_ {
     #[serde(skip_serializing_if = "std::vec::Vec::is_empty")]
     depends_on: std::vec::Vec<std::string::String>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
@@ -28,7 +30,7 @@ struct AppData {
 struct App_ {
     shared: terrars::StackShared,
     tf_id: std::string::String,
-    data: std::cell::RefCell<AppData>,
+    data: std::cell::RefCell<AppData_>,
 }
 
 #[derive(Clone)]
@@ -223,7 +225,7 @@ impl BuildApp {
         let out = App(std::rc::Rc::new(App_ {
             shared: stack.shared.clone(),
             tf_id: self.tf_id,
-            data: std::cell::RefCell::new(AppData {
+            data: std::cell::RefCell::new(AppData_ {
                 depends_on: core::default::Default::default(),
                 provider: std::option::Option::None,
                 lifecycle: core::default::Default::default(),

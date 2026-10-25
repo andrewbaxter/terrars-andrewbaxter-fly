@@ -1,3 +1,5 @@
+#![allow(non_camel_case_types)]
+
 use serde::Serialize;
 use terrars::{
     Referable as _,
@@ -7,7 +9,7 @@ use terrars::{
 use super::provider::ProviderFly;
 
 #[derive(Serialize)]
-struct DataCertData {
+struct DataCertData_ {
     #[serde(skip_serializing_if = "std::vec::Vec::is_empty")]
     depends_on: std::vec::Vec<std::string::String>,
     #[serde(skip_serializing_if = "terrars::SerdeSkipDefault::is_default")]
@@ -23,7 +25,7 @@ struct DataCertData {
 struct DataCert_ {
     shared: terrars::StackShared,
     tf_id: std::string::String,
-    data: std::cell::RefCell<DataCertData>,
+    data: std::cell::RefCell<DataCertData_>,
 }
 
 #[derive(Clone)]
@@ -148,7 +150,7 @@ impl BuildDataCert {
         let out = DataCert(std::rc::Rc::new(DataCert_ {
             shared: stack.shared.clone(),
             tf_id: self.tf_id,
-            data: std::cell::RefCell::new(DataCertData {
+            data: std::cell::RefCell::new(DataCertData_ {
                 depends_on: core::default::Default::default(),
                 provider: std::option::Option::None,
                 lifecycle: core::default::Default::default(),

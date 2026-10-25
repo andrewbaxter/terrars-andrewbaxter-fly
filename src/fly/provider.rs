@@ -1,7 +1,9 @@
+#![allow(non_camel_case_types)]
+
 use serde::Serialize;
 
 #[derive(Serialize)]
-struct ProviderFlyData {
+struct ProviderFlyData_ {
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
     alias: std::option::Option<std::string::String>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
@@ -11,7 +13,7 @@ struct ProviderFlyData {
 }
 
 struct ProviderFly_ {
-    data: std::cell::RefCell<ProviderFlyData>,
+    data: std::cell::RefCell<ProviderFlyData_>,
 }
 
 pub struct ProviderFly(std::rc::Rc<ProviderFly_>);
@@ -52,7 +54,7 @@ impl terrars::Provider for ProviderFly_ {
     fn extract_provider_type(&self) -> serde_json::Value {
         serde_json::json!({
             "source": "andrewbaxter/fly",
-            "version": "0.1.7",
+            "version": "0.1.18",
         })
     }
 
@@ -65,7 +67,7 @@ pub struct BuildProviderFly {}
 
 impl BuildProviderFly {
     pub fn build(self, stack: &mut terrars::Stack) -> ProviderFly {
-        let out = ProviderFly(std::rc::Rc::new(ProviderFly_ { data: std::cell::RefCell::new(ProviderFlyData {
+        let out = ProviderFly(std::rc::Rc::new(ProviderFly_ { data: std::cell::RefCell::new(ProviderFlyData_ {
             alias: std::option::Option::None,
             fly_api_token: core::default::Default::default(),
             fly_http_endpoint: core::default::Default::default(),

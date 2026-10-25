@@ -1,3 +1,5 @@
+#![allow(non_camel_case_types)]
+
 use serde::Serialize;
 use terrars::{
     Referable as _,
@@ -7,7 +9,7 @@ use terrars::{
 use super::provider::ProviderFly;
 
 #[derive(Serialize)]
-struct MachineData {
+struct MachineData_ {
     #[serde(skip_serializing_if = "std::vec::Vec::is_empty")]
     depends_on: std::vec::Vec<std::string::String>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
@@ -37,18 +39,18 @@ struct MachineData {
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
     memory: std::option::Option<terrars::PrimField<f64>>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
-    mounts: std::option::Option<std::vec::Vec<MachineMountsEl>>,
+    mounts: std::option::Option<std::vec::Vec<Machine_Mounts>>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
     name: std::option::Option<terrars::PrimField<std::string::String>>,
     region: terrars::PrimField<std::string::String>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
-    services: std::option::Option<std::vec::Vec<MachineServicesEl>>,
+    services: std::option::Option<std::vec::Vec<Machine_Services>>,
 }
 
 struct Machine_ {
     shared: terrars::StackShared,
     tf_id: std::string::String,
-    data: std::cell::RefCell<MachineData>,
+    data: std::cell::RefCell<MachineData_>,
 }
 
 #[derive(Clone)]
@@ -209,19 +211,19 @@ impl Machine {
     }
 
     #[doc = "Set the field `mounts`.\n"]
-    pub fn set_mounts(self, v: impl std::convert::Into<std::vec::Vec<MachineMountsEl>>) -> Self {
+    pub fn set_mounts(self, v: impl std::convert::Into<std::vec::Vec<Machine_Mounts>>) -> Self {
         self.0.data.borrow_mut().mounts = std::option::Option::Some(v.into());
         self
     }
 
-    #[doc = "Set the field `name`.\nA user-provided identifier, matching regexp `^[a-z0-9-]+$`"]
+    #[doc = "Set the field `name`.\nA user-provided identifier"]
     pub fn set_name(self, v: impl std::convert::Into<terrars::PrimField<std::string::String>>) -> Self {
         self.0.data.borrow_mut().name = std::option::Option::Some(v.into());
         self
     }
 
     #[doc = "Set the field `services`.\n"]
-    pub fn set_services(self, v: impl std::convert::Into<std::vec::Vec<MachineServicesEl>>) -> Self {
+    pub fn set_services(self, v: impl std::convert::Into<std::vec::Vec<Machine_Services>>) -> Self {
         self.0.data.borrow_mut().services = std::option::Option::Some(v.into());
         self
     }
@@ -285,12 +287,11 @@ impl Machine {
     }
 
     #[doc = "Get a reference to the value of field `mounts` after provisioning.\n"]
-    pub fn mounts(&self) -> terrars::ListRef<MachineMountsElRef> {
+    pub fn mounts(&self) -> terrars::ListRef<Machine_MountsRef> {
         terrars::ListRef::new(self.shared().clone(), format!("{}.mounts", self.extract_ref()))
     }
 
-    #[doc =
-        "Get a reference to the value of field `name` after provisioning.\nA user-provided identifier, matching regexp `^[a-z0-9-]+$`"]
+    #[doc = "Get a reference to the value of field `name` after provisioning.\nA user-provided identifier"]
     pub fn name(&self) -> terrars::PrimExpr<std::string::String> {
         terrars::PrimExpr::new(self.shared().clone(), format!("{}.name", self.extract_ref()))
     }
@@ -306,7 +307,7 @@ impl Machine {
     }
 
     #[doc = "Get a reference to the value of field `services` after provisioning.\n"]
-    pub fn services(&self) -> terrars::ListRef<MachineServicesElRef> {
+    pub fn services(&self) -> terrars::ListRef<Machine_ServicesRef> {
         terrars::ListRef::new(self.shared().clone(), format!("{}.services", self.extract_ref()))
     }
 }
@@ -357,7 +358,7 @@ impl BuildMachine {
         let out = Machine(std::rc::Rc::new(Machine_ {
             shared: stack.shared.clone(),
             tf_id: self.tf_id,
-            data: std::cell::RefCell::new(MachineData {
+            data: std::cell::RefCell::new(MachineData_ {
                 depends_on: core::default::Default::default(),
                 provider: std::option::Option::None,
                 lifecycle: core::default::Default::default(),
@@ -466,12 +467,11 @@ impl MachineRef {
     }
 
     #[doc = "Get a reference to the value of field `mounts` after provisioning.\n"]
-    pub fn mounts(&self) -> terrars::ListRef<MachineMountsElRef> {
+    pub fn mounts(&self) -> terrars::ListRef<Machine_MountsRef> {
         terrars::ListRef::new(self.shared().clone(), format!("{}.mounts", self.extract_ref()))
     }
 
-    #[doc =
-        "Get a reference to the value of field `name` after provisioning.\nA user-provided identifier, matching regexp `^[a-z0-9-]+$`"]
+    #[doc = "Get a reference to the value of field `name` after provisioning.\nA user-provided identifier"]
     pub fn name(&self) -> terrars::PrimExpr<std::string::String> {
         terrars::PrimExpr::new(self.shared().clone(), format!("{}.name", self.extract_ref()))
     }
@@ -487,21 +487,21 @@ impl MachineRef {
     }
 
     #[doc = "Get a reference to the value of field `services` after provisioning.\n"]
-    pub fn services(&self) -> terrars::ListRef<MachineServicesElRef> {
+    pub fn services(&self) -> terrars::ListRef<Machine_ServicesRef> {
         terrars::ListRef::new(self.shared().clone(), format!("{}.services", self.extract_ref()))
     }
 }
 
 #[derive(Serialize)]
-pub struct MachineMountsEl {
+pub struct Machine_Mounts {
     path: terrars::PrimField<std::string::String>,
     volume: terrars::PrimField<std::string::String>,
 }
 
-impl MachineMountsEl { }
+impl Machine_Mounts { }
 
-impl terrars::ToListMappable for MachineMountsEl {
-    type O = terrars::BlockAssignable<MachineMountsEl>;
+impl terrars::ToListMappable for Machine_Mounts {
+    type O = terrars::BlockAssignable<Machine_Mounts>;
 
     fn do_map(self, base: std::string::String) -> Self::O {
         terrars::BlockAssignable::Dynamic(terrars::DynamicBlock {
@@ -512,37 +512,39 @@ impl terrars::ToListMappable for MachineMountsEl {
     }
 }
 
-pub struct BuildMachineMountsEl {
+pub struct BuildMachine_Mounts {
     #[doc = "Path for volume to be mounted on vm, ex: `/data`"]
     pub path: terrars::PrimField<std::string::String>,
     #[doc = "ID of volume"]
     pub volume: terrars::PrimField<std::string::String>,
 }
 
-impl BuildMachineMountsEl {
-    pub fn build(self) -> MachineMountsEl {
-        MachineMountsEl {
+impl BuildMachine_Mounts {
+    pub fn build(self) -> Machine_Mounts {
+        Machine_Mounts {
             path: self.path,
             volume: self.volume,
         }
     }
 }
 
-pub struct MachineMountsElRef {
+#[allow(dead_code)]
+pub struct Machine_MountsRef {
     shared: terrars::StackShared,
     base: std::string::String,
 }
 
-impl terrars::Ref for MachineMountsElRef {
-    fn new(shared: terrars::StackShared, base: std::string::String) -> MachineMountsElRef {
-        MachineMountsElRef {
+impl terrars::Ref for Machine_MountsRef {
+    fn new(shared: terrars::StackShared, base: std::string::String) -> Machine_MountsRef {
+        Machine_MountsRef {
             shared: shared,
             base: base.to_string(),
         }
     }
 }
 
-impl MachineMountsElRef {
+impl Machine_MountsRef {
+    #[allow(dead_code)]
     fn shared(&self) -> &terrars::StackShared {
         &self.shared
     }
@@ -560,15 +562,26 @@ impl MachineMountsElRef {
 }
 
 #[derive(Serialize)]
-pub struct MachineServicesElPortsEl {
+pub struct Machine_Services_Ports {
+    #[serde(skip_serializing_if = "std::option::Option::is_none")]
+    end_port: std::option::Option<terrars::PrimField<f64>>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
     force_https: std::option::Option<terrars::PrimField<bool>>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
     handlers: std::option::Option<terrars::ListField<terrars::PrimField<std::string::String>>>,
-    port: terrars::PrimField<f64>,
+    #[serde(skip_serializing_if = "std::option::Option::is_none")]
+    port: std::option::Option<terrars::PrimField<f64>>,
+    #[serde(skip_serializing_if = "std::option::Option::is_none")]
+    start_port: std::option::Option<terrars::PrimField<f64>>,
 }
 
-impl MachineServicesElPortsEl {
+impl Machine_Services_Ports {
+    #[doc = "Set the field `end_port`.\nFor a port range, the last port to listen on"]
+    pub fn set_end_port(mut self, v: impl std::convert::Into<terrars::PrimField<f64>>) -> Self {
+        self.end_port = std::option::Option::Some(v.into());
+        self
+    }
+
     #[doc = "Set the field `force_https`.\nAutomatically redirect to HTTPS on \"http\" handler"]
     pub fn set_force_https(mut self, v: impl std::convert::Into<terrars::PrimField<bool>>) -> Self {
         self.force_https = std::option::Option::Some(v.into());
@@ -584,10 +597,23 @@ impl MachineServicesElPortsEl {
         self.handlers = std::option::Option::Some(v.into());
         self
     }
+
+    #[doc =
+        "Set the field `port`.\nMapped external port number, either `port` or `start_port` and `end_port` must be set."]
+    pub fn set_port(mut self, v: impl std::convert::Into<terrars::PrimField<f64>>) -> Self {
+        self.port = std::option::Option::Some(v.into());
+        self
+    }
+
+    #[doc = "Set the field `start_port`.\nFor a port range, the first port to listen on."]
+    pub fn set_start_port(mut self, v: impl std::convert::Into<terrars::PrimField<f64>>) -> Self {
+        self.start_port = std::option::Option::Some(v.into());
+        self
+    }
 }
 
-impl terrars::ToListMappable for MachineServicesElPortsEl {
-    type O = terrars::BlockAssignable<MachineServicesElPortsEl>;
+impl terrars::ToListMappable for Machine_Services_Ports {
+    type O = terrars::BlockAssignable<Machine_Services_Ports>;
 
     fn do_map(self, base: std::string::String) -> Self::O {
         terrars::BlockAssignable::Dynamic(terrars::DynamicBlock {
@@ -598,38 +624,45 @@ impl terrars::ToListMappable for MachineServicesElPortsEl {
     }
 }
 
-pub struct BuildMachineServicesElPortsEl {
-    #[doc = "Mapped external port number"]
-    pub port: terrars::PrimField<f64>,
-}
+pub struct BuildMachine_Services_Ports {}
 
-impl BuildMachineServicesElPortsEl {
-    pub fn build(self) -> MachineServicesElPortsEl {
-        MachineServicesElPortsEl {
+impl BuildMachine_Services_Ports {
+    pub fn build(self) -> Machine_Services_Ports {
+        Machine_Services_Ports {
+            end_port: core::default::Default::default(),
             force_https: core::default::Default::default(),
             handlers: core::default::Default::default(),
-            port: self.port,
+            port: core::default::Default::default(),
+            start_port: core::default::Default::default(),
         }
     }
 }
 
-pub struct MachineServicesElPortsElRef {
+#[allow(dead_code)]
+pub struct Machine_Services_PortsRef {
     shared: terrars::StackShared,
     base: std::string::String,
 }
 
-impl terrars::Ref for MachineServicesElPortsElRef {
-    fn new(shared: terrars::StackShared, base: std::string::String) -> MachineServicesElPortsElRef {
-        MachineServicesElPortsElRef {
+impl terrars::Ref for Machine_Services_PortsRef {
+    fn new(shared: terrars::StackShared, base: std::string::String) -> Machine_Services_PortsRef {
+        Machine_Services_PortsRef {
             shared: shared,
             base: base.to_string(),
         }
     }
 }
 
-impl MachineServicesElPortsElRef {
+impl Machine_Services_PortsRef {
+    #[allow(dead_code)]
     fn shared(&self) -> &terrars::StackShared {
         &self.shared
+    }
+
+    #[doc =
+        "Get a reference to the value of field `end_port` after provisioning.\nFor a port range, the last port to listen on"]
+    pub fn end_port(&self) -> terrars::PrimExpr<f64> {
+        terrars::PrimExpr::new(self.shared().clone(), format!("{}.end_port", self.base))
     }
 
     #[doc =
@@ -644,23 +677,30 @@ impl MachineServicesElPortsElRef {
         terrars::ListRef::new(self.shared().clone(), format!("{}.handlers", self.base))
     }
 
-    #[doc = "Get a reference to the value of field `port` after provisioning.\nMapped external port number"]
+    #[doc =
+        "Get a reference to the value of field `port` after provisioning.\nMapped external port number, either `port` or `start_port` and `end_port` must be set."]
     pub fn port(&self) -> terrars::PrimExpr<f64> {
         terrars::PrimExpr::new(self.shared().clone(), format!("{}.port", self.base))
+    }
+
+    #[doc =
+        "Get a reference to the value of field `start_port` after provisioning.\nFor a port range, the first port to listen on."]
+    pub fn start_port(&self) -> terrars::PrimExpr<f64> {
+        terrars::PrimExpr::new(self.shared().clone(), format!("{}.start_port", self.base))
     }
 }
 
 #[derive(Serialize)]
-pub struct MachineServicesEl {
+pub struct Machine_Services {
     internal_port: terrars::PrimField<f64>,
-    ports: std::vec::Vec<MachineServicesElPortsEl>,
+    ports: std::vec::Vec<Machine_Services_Ports>,
     protocol: terrars::PrimField<std::string::String>,
 }
 
-impl MachineServicesEl { }
+impl Machine_Services { }
 
-impl terrars::ToListMappable for MachineServicesEl {
-    type O = terrars::BlockAssignable<MachineServicesEl>;
+impl terrars::ToListMappable for Machine_Services {
+    type O = terrars::BlockAssignable<Machine_Services>;
 
     fn do_map(self, base: std::string::String) -> Self::O {
         terrars::BlockAssignable::Dynamic(terrars::DynamicBlock {
@@ -671,18 +711,18 @@ impl terrars::ToListMappable for MachineServicesEl {
     }
 }
 
-pub struct BuildMachineServicesEl {
+pub struct BuildMachine_Services {
     #[doc = "Port the machine listens on"]
     pub internal_port: terrars::PrimField<f64>,
     #[doc = "How the port is exposed"]
-    pub ports: std::vec::Vec<MachineServicesElPortsEl>,
+    pub ports: std::vec::Vec<Machine_Services_Ports>,
     #[doc = "`udp` or `tcp`"]
     pub protocol: terrars::PrimField<std::string::String>,
 }
 
-impl BuildMachineServicesEl {
-    pub fn build(self) -> MachineServicesEl {
-        MachineServicesEl {
+impl BuildMachine_Services {
+    pub fn build(self) -> Machine_Services {
+        Machine_Services {
             internal_port: self.internal_port,
             ports: self.ports,
             protocol: self.protocol,
@@ -690,21 +730,23 @@ impl BuildMachineServicesEl {
     }
 }
 
-pub struct MachineServicesElRef {
+#[allow(dead_code)]
+pub struct Machine_ServicesRef {
     shared: terrars::StackShared,
     base: std::string::String,
 }
 
-impl terrars::Ref for MachineServicesElRef {
-    fn new(shared: terrars::StackShared, base: std::string::String) -> MachineServicesElRef {
-        MachineServicesElRef {
+impl terrars::Ref for Machine_ServicesRef {
+    fn new(shared: terrars::StackShared, base: std::string::String) -> Machine_ServicesRef {
+        Machine_ServicesRef {
             shared: shared,
             base: base.to_string(),
         }
     }
 }
 
-impl MachineServicesElRef {
+impl Machine_ServicesRef {
+    #[allow(dead_code)]
     fn shared(&self) -> &terrars::StackShared {
         &self.shared
     }
@@ -715,7 +757,7 @@ impl MachineServicesElRef {
     }
 
     #[doc = "Get a reference to the value of field `ports` after provisioning.\nHow the port is exposed"]
-    pub fn ports(&self) -> terrars::ListRef<MachineServicesElPortsElRef> {
+    pub fn ports(&self) -> terrars::ListRef<Machine_Services_PortsRef> {
         terrars::ListRef::new(self.shared().clone(), format!("{}.ports", self.base))
     }
 

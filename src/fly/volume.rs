@@ -1,3 +1,5 @@
+#![allow(non_camel_case_types)]
+
 use serde::Serialize;
 use terrars::{
     Referable as _,
@@ -7,7 +9,7 @@ use terrars::{
 use super::provider::ProviderFly;
 
 #[derive(Serialize)]
-struct VolumeData {
+struct VolumeData_ {
     #[serde(skip_serializing_if = "std::vec::Vec::is_empty")]
     depends_on: std::vec::Vec<std::string::String>,
     #[serde(skip_serializing_if = "std::option::Option::is_none")]
@@ -29,7 +31,7 @@ struct VolumeData {
 struct Volume_ {
     shared: terrars::StackShared,
     tf_id: std::string::String,
-    data: std::cell::RefCell<VolumeData>,
+    data: std::cell::RefCell<VolumeData_>,
 }
 
 #[derive(Clone)]
@@ -150,8 +152,7 @@ impl Volume {
         terrars::PrimExpr::new(self.shared().clone(), format!("{}.id", self.extract_ref()))
     }
 
-    #[doc =
-        "Get a reference to the value of field `name` after provisioning.\nA user-provided identifier, matching regexp `^[a-z0-9-]+$`"]
+    #[doc = "Get a reference to the value of field `name` after provisioning.\nA user-provided identifier"]
     pub fn name(&self) -> terrars::PrimExpr<std::string::String> {
         terrars::PrimExpr::new(self.shared().clone(), format!("{}.name", self.extract_ref()))
     }
@@ -202,7 +203,7 @@ pub struct BuildVolume {
     pub tf_id: std::string::String,
     #[doc = "The App this resource will be created in"]
     pub app: terrars::PrimField<std::string::String>,
-    #[doc = "A user-provided identifier, matching regexp `^[a-z0-9-]+$`"]
+    #[doc = "A user-provided identifier"]
     pub name: terrars::PrimField<std::string::String>,
     #[doc = "Fly region, ex `ord`, `sin`, `mad`"]
     pub region: terrars::PrimField<std::string::String>,
@@ -215,7 +216,7 @@ impl BuildVolume {
         let out = Volume(std::rc::Rc::new(Volume_ {
             shared: stack.shared.clone(),
             tf_id: self.tf_id,
-            data: std::cell::RefCell::new(VolumeData {
+            data: std::cell::RefCell::new(VolumeData_ {
                 depends_on: core::default::Default::default(),
                 provider: std::option::Option::None,
                 lifecycle: core::default::Default::default(),
@@ -271,8 +272,7 @@ impl VolumeRef {
         terrars::PrimExpr::new(self.shared().clone(), format!("{}.id", self.extract_ref()))
     }
 
-    #[doc =
-        "Get a reference to the value of field `name` after provisioning.\nA user-provided identifier, matching regexp `^[a-z0-9-]+$`"]
+    #[doc = "Get a reference to the value of field `name` after provisioning.\nA user-provided identifier"]
     pub fn name(&self) -> terrars::PrimExpr<std::string::String> {
         terrars::PrimExpr::new(self.shared().clone(), format!("{}.name", self.extract_ref()))
     }
